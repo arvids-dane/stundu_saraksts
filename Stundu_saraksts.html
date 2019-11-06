@@ -1,7 +1,7 @@
 <script>
 function stundasMasiivaa(){
 var saraksts = new Map()
-for(var i = 1; i <= 5; i++) {
+for(let i = 1; i <= 5; i++) {
     for(let j = 1; j <= 12; j++){
         for(let k = 1; k <= 9; k++){
   let id = "d" + i+"_c"+j+"_l"+k
@@ -12,14 +12,14 @@ for(var i = 1; i <= 5; i++) {
  saraksti = JSON.stringify(Array.from(saraksts.entries()));
  
  function download(data, filename, type) {
-    var file = new Blob([data], {type: type});
+    let file = new Blob([data], {type: type});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
-        window.navigator.msSaveOrOpenBlob(file, filename);
+        window.navigator.msSaveOrOpenBlob(file, filename, type);
     else { // Others
-        var a = document.createElement("a"),
+        let a = document.createElement("a"),
                 url = URL.createObjectURL(file);
         a.href = url;
-        a.download = filename;
+        a.download = filename+".txt";
         document.body.appendChild(a);
         a.click();
         setTimeout(function() {
@@ -28,7 +28,7 @@ for(var i = 1; i <= 5; i++) {
         }, 0); 
     }
 }
-download(saraksti, 'file', 'txt') // file is filename, and txt is type of file. */
+download(saraksti, 'stundas', 'txt') // file is filename, and txt is type of file. */
 
 }
 </script>
@@ -1323,7 +1323,7 @@ download(saraksti, 'file', 'txt') // file is filename, and txt is type of file. 
         <option>Novada m.</option>
         <option>Datorika</option>
         <option> </option>
-    </select>a</td>
+    </select></td>
 	<td id="stienis_r">37.</td>
 	<td><select id="d1_c3_l5"><option>Angļu val.</option>
 		<option>Bioloģija</option>
@@ -13754,4 +13754,4 @@ download(saraksti, 'file', 'txt') // file is filename, and txt is type of file. 
 	</tbody>
     </table>
     <input type="button" value="Saglabāt!" onclick="stundasMasiivaa()">
-	<p>&nbsp;</p>
+	<p id="eksports">&nbsp;</p>
