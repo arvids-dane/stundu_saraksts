@@ -1,28 +1,1415 @@
+<style type="text/css">
+	:link {
+		color: #000000;
+		text-decoration: none;
+	}
+	
+	:link:active {
+		color: #000000;
+	}
+	
+	:link:visited {
+		color: #000000;
+	}
+	
+	
+	#Tb_Stundu_saraksts {
+		background-color: transparent;
+		border-collapse: collapse;
+		color: black;
+		font-family: Calibri;
+		margin-top: 7px;
+	}
+	
+	#tabulas_galva {
+		text-align: center;
+		border: 3px solid black;
+		font-size: 10pt;
+	}
+	
+	#Tb_Stundu_saraksts th {
+		border: 3px solid black;
+		border-collapse: collapse;
+	}
+	
+	#Tb_Stundu_saraksts td {
+		text-align: left;
+		font-size: 8pt;
+		line-height: 8pt;
+		border-collapse: collapse;
+		border: 1px solid black;
+		padding-left: 5px; /* atkaape priekshaa stundaam */
+		height: 10px; /* lai uz citiem paarluukiem vertikaali neizstiepjas */
+	}
+	
+	#dienas_vertikali {
+		font-size: 10pt;
+		font-weight: bold;
+		text-align: center;
+		vertical-align: middle;
+		width: 15px;
+		margin: 0px;
+		padding: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+		padding-top: 0px;
+		white-space: nowrap;
+		/* writing-mode: tb-rl;
+		-webkit-transform: rotate(270deg);
+		-moz-transform: rotate(270deg);
+		-ms-transform: rotate(270deg);
+		-o-transform: rotate(270deg);
+		transform: rotate(270deg); */
+		writing-mode: vertical-rl;
+	}
+	
+	.rindas_apaksha {
+		border-bottom: 3px solid;
+	}
+	
+	#Tb_Stundu_saraksts #stienis_r {
+		border-right: 3px solid;
+	}
+	
+	.izcelta_rinda {
+		background: rgba(141, 166, 192, 0.5); /* rgba(104, 137, 172, 0.5); rgba(141, 0, 0, 0.15); */
+	}
+	</style>
 <p>Jaunais, modificētais stundu saraksts  <input type="file" id="fileinput" /></p>
 <script>
+var stunduSarakstsObjekts = new Map()
+
 function readSingleFile(evt) {
     //Retrieve the first (and only!) File from the FileList object
-    var f = evt.target.files[0]; 
+    var f = evt.target.files[0]
 
     if (f) {
-      var r = new FileReader();
+      var r = new FileReader()
       r.onload = function(e) { 
-	      var contents = e.target.result;
-        alert( "Got the file. \n" 
+	      var contents = e.target.result
+        /* alert( "Got the file. \n" 
               +"name: " + f.name + "\n"
               +"type: " + f.type + "\n"
               +"size: " + f.size + " bytes \n"
               + "starts with: " + contents.substr(1, contents.indexOf(","))
-        );  
-        document.getElementById("eksports").innerHTML = contents;
+        );   */
+        stunduSarakstsObjekts = JSON.parse(contents)
+        var count = 0
+        for(let i = 1; i<=5; i++){
+            for(let j = 1; j<=12; j++){
+                for(let k = 1; k<=9; k++){
+                    let id = "d" + i+"_c"+j+"_l"+k
+                    stunda = stunduSarakstsObjekts[count]
+                    document.getElementById(id).innerText = stunda[1]
+                    count++
+                                }}}
       }
-      r.readAsText(f);
+      r.readAsText(f)
     } else { 
-      alert("Failed to load file");
+      alert("Failed to load file")
     }
- 
+
   }
 
   document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
   </script>
-  <p id="eksports">&nbsp;</p>
+  <p id="eksports">Šeit ievadīs faila saturu!</p>
+  <table id="Tb_Stundu_saraksts">
+	<thead>
+	<tr id="tabulas_galva" >
+	<th  colspan="2">Npk</th>
+	<th >Laiks:</th>
+	<th  colspan="2">1. klase</th>
+	<th  colspan="2">2. klase</th>
+	<th  colspan="2">3. klase</th>
+	<th  colspan="2">4. klase</th>
+	<th  colspan="2">5. klase</th>
+	<th  colspan="2">6. klase</th>
+	<th  colspan="2">7. klase</th>
+	<th  colspan="2">8. klase</th>
+	<th  colspan="2">9. klase</th>
+	<th  colspan="2">10. klase</th>
+	<th  colspan="2">11. klase</th>
+	<th  colspan="2">12. klase</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr id="d-1_s-1">
+	<td id="diena_1" colspan="1" rowspan="9">
+	<div id="dienas_vertikali">Pirmdiena</div>
+	</td>
+	<td id="stienis_r">1.</td>
+	<td id="stienis_r">8<sup>30</sup>-9<sup>10</sup></td>
+	<td id="d1_c1_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l1">&nbsp;</td>
+	<td id="d1_c2_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l1">&nbsp;</td>
+	<td id="d1_c3_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l1">&nbsp;</td>
+	<td id="d1_c4_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l1">&nbsp;</td>
+	<td id="d1_c5_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l1">&nbsp;</td>
+	<td id="d1_c6_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c6_l1">&nbsp;</td>
+	<td id="d1_c7_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l1">&nbsp;</td>
+	<td id="d1_c8_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l1">&nbsp;</td>
+	<td id="d1_c9_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l1">&nbsp;</td>
+	<td id="d1_c10_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l1">&nbsp;</td>
+	<td id="d1_c11_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l1">&nbsp;</td>
+	<td id="d1_c12_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l1">&nbsp;</td>
+	</tr>
+	<tr id="d-1_s-2">
+	<td id="stienis_r">2.</td>
+	<td id="stienis_r">9<sup>20</sup>-10<sup>00</sup></td>
+	<td id="d1_c1_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l2">&nbsp;</td>
+	<td id="d1_c2_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l2">&nbsp;</td>
+	<td id="d1_c3_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l2">&nbsp;</td>
+	<td id="d1_c4_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l2">&nbsp;</td>
+	<td id="d1_c5_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l2">&nbsp;</td>
+	<td id="d1_c6_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c6_l2">&nbsp;</td>
+	<td id="d1_c7_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l2">&nbsp;</td>
+	<td id="d1_c8_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l2">44.</td>
+	<td id="d1_c9_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l2">40.</td>
+	<td id="d1_c10_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l2">45.</td>
+	<td id="d1_c11_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l2">34.</td>
+	<td id="d1_c12_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l2">19.</td>
+	</tr>
+	<tr id="d-1_s-3" >
+	<td id="stienis_r" >3.</td>
+	<td id="stienis_r" >10<sup>10</sup>-10<sup>50</sup></td>
+	<td  id="d1_c1_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l3">&nbsp;</td>
+	<td  id="d1_c2_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l3">37.</td>
+	<td  id="d1_c3_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l3">32.</td>
+	<td  id="d1_c4_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l3">33.</td>
+	<td  id="d1_c5_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l3">34.</td>
+	<td  id="d1_c6_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c6_l3">45.</td>
+	<td  id="d1_c7_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l3">19.</td>
+	<td  id="d1_c8_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l3">&nbsp;</td>
+	<td  id="d1_c9_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l3">44.</td>
+	<td  id="d1_c10_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l3">40.</td>
+	<td  id="d1_c11_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l3">35.</td>
+	<td  id="d1_c12_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l3">27.</td>
+	</tr>
+	<tr id="d-1_s-4" >
+	<td id="stienis_r" >4.</td>
+	<td id="stienis_r" >11<sup>00</sup>-11<sup>40</sup></td>
+	<td  id="d1_c1_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l4">37.</td>
+	<td  id="d1_c2_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l4">37.</td>
+	<td  id="d1_c3_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l4">32.</td>
+	<td  id="d1_c4_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l4">24.</td>
+	<td  id="d1_c5_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l4">34.</td>
+	<td  id="d1_c6_l4">&nbsp;.</td>
+	<td id="stienis_r" class="cab_d1_c6_l4">25.</td>
+	<td  id="d1_c7_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l4">19.</td>
+	<td  id="d1_c8_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l4">&nbsp;</td>
+	<td  id="d1_c9_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l4">44.</td>
+	<td  id="d1_c10_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l4">46.</td>
+	<td  id="d1_c11_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l4">45.</td>
+	<td  id="d1_c12_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l4">40.</td>
+	</tr>
+	<tr id="d-1_s-5">
+	<td id="stienis_r">5.</td>
+	<td id="stienis_r">12<sup>10</sup>-12<sup>50</sup></td>
+	<td id="d1_c1_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l5">35.</td>
+	<td id="d1_c2_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l5">37.</td>
+	<td id="d1_c3_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l5">&nbsp;</td>
+	<td id="d1_c4_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l5">33.</td>
+	<td id="d1_c5_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l5">45.</td>
+	<td id="d1_c6_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c6_l5">24.</td>
+	<td id="d1_c7_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l5">44.</td>
+	<td id="d1_c8_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l5">25.</td>
+	<td id="d1_c9_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l5">42.</td>
+	<td id="d1_c10_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l5">27.</td>
+	<td id="d1_c11_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l5">43.</td>
+	<td id="d1_c12_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l5">40.</td>
+	</tr>
+	<tr id="d-1_s-6" >
+	<td id="stienis_r" >6.</td>
+	<td id="stienis_r" >13<sup>20</sup>-14<sup>00</sup></td>
+	<td  id="d1_c1_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l6">&nbsp;</td>
+	<td  id="d1_c2_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l6">&nbsp;</td>
+	<td  id="d1_c3_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l6" >&nbsp;35.</td>
+	<td  id="d1_c4_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l6">&nbsp;</td>
+	<td  id="d1_c5_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l6">38.</td>
+	<td  id="d1_c6_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c6_l6">45.</td>
+	<td  id="d1_c7_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l6">44.</td>
+	<td  id="d1_c8_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l6">19.</td>
+	<td  id="d1_c9_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l6">43.</td>
+	<td  id="d1_c10_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l6">42.</td>
+	<td  id="d1_c11_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l6">40.</td>
+	<td  id="d1_c12_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l6">25.</td>
+	</tr>
+	<tr id="d-1_s-7" >
+	<td id="stienis_r" >7.</td>
+	<td id="stienis_r" >14<sup>10</sup>-14<sup>50</sup></td>
+	<td  id="d1_c1_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l7">&nbsp;</td>
+	<td  id="d1_c2_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l7">&nbsp;</td>
+	<td  id="d1_c3_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l7">&nbsp;</td>
+	<td  id="d1_c4_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l7">&nbsp;</td>
+	<td  id="d1_c5_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l7">&nbsp;</td>
+	<td  id="d1_c6_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c6_l7">38.</td>
+	<td  id="d1_c7_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l7">25.</td>
+	<td  id="d1_c8_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l7">42.</td>
+	<td  id="d1_c9_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l7">45.</td>
+	<td  id="d1_c10_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l7">&nbsp;</td>
+	<td  id="d1_c11_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l7">40.</td>
+	<td  id="d1_c12_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l7">&nbsp;</td>
+	</tr>
+	<tr id="d-1_s-8">
+	<td id="stienis_r">8.</td>
+	<td id="stienis_r">15<sup>00</sup>-15<sup>40</sup></td>
+	<td id="d1_c1_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l8">&nbsp;</td>
+	<td id="d1_c2_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l8">&nbsp;</td>
+	<td id="d1_c3_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l8">&nbsp;</td>
+	<td id="d1_c4_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l8">&nbsp;</td>
+	<td id="d1_c5_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l8">&nbsp;</td>
+	<td id="d1_c6_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c6_l8">&nbsp;</td>
+	<td id="d1_c7_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l8">&nbsp;</td>
+	<td id="d1_c8_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l8">&nbsp;</td>
+	<td id="d1_c9_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l8">&nbsp;</td>
+	<td id="d1_c10_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l8">&nbsp;</td>
+	<td id="d1_c11_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l8">&nbsp;</td>
+	<td id="d1_c12_l8">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l8">&nbsp;</td>
+	</tr>
+	<tr id="d-1_s-9" class="rindas_apaksha">
+	<td id="stienis_r">9.</td>
+	<td id="stienis_r">15<sup>50</sup>-16<sup>30</sup></td>
+	<td id="d1_c1_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c1_l9">&nbsp;</td>
+	<td id="d1_c2_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c2_l9">&nbsp;</td>
+	<td id="d1_c3_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c3_l9">&nbsp;</td>
+	<td id="d1_c4_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c4_l9">&nbsp;</td>
+	<td id="d1_c5_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c5_l9">&nbsp;</td>
+	<td id="d1_c6_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c6_l9">&nbsp;</td>
+	<td id="d1_c7_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c7_l9">&nbsp;</td>
+	<td id="d1_c8_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c8_l9">&nbsp;</td>
+	<td id="d1_c9_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c9_l9">&nbsp;</td>
+	<td id="d1_c10_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c10_l9">&nbsp;</td>
+	<td id="d1_c11_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c11_l9">&nbsp;</td>
+	<td id="d1_c12_l9">&nbsp;</td>
+	<td id="stienis_r" class="cab_d1_c12_l9">&nbsp;</td>
+	</tr>
+	<tr id="d-2_s-1">
+	<td id="diena_2" colspan="1" rowspan="9">
+	<div id="dienas_vertikali">Otrdiena</div>
+	</td>
+	<td id="stienis_r">1.</td>
+	<td id="stienis_r">8<sup> 30 </sup>-9<sup> 10 </sup></td>
+	<td id="d2_c1_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c1_l1">36.</td>
+	<td id="d2_c2_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c2_l1">37.</td>
+	<td id="d2_c3_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c3_l1">32.</td>
+	<td id="d2_c4_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c4_l1">33.</td>
+	<td id="d2_c5_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c5_l1">45.</td>
+	<td id="d2_c6_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c6_l1">34.</td>
+	<td id="d2_c7_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c7_l1">44.</td>
+	<td id="d2_c8_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c8_l1">43.</td>
+	<td id="d2_c9_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c9_l1">24.</td>
+	<td id="d2_c10_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c10_l1">42.</td>
+	<td id="d2_c11_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c11_l1">38.</td>
+	<td id="d2_c12_l1">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c12_l1">19.</td>
+	</tr>
+	<tr id="d-2_s-2">
+	<td id="stienis_r">2.</td>
+	<td id="stienis_r">9<sup> 20 </sup>-10<sup> 00 </sup></td>
+	<td id="d2_c1_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c1_l2">36.</td>
+	<td id="d2_c2_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c2_l2">&nbsp;</td>
+	<td id="d2_c3_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c3_l2">32.</td>
+	<td id="d2_c4_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c4_l2">24.</td>
+	<td id="d2_c5_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c5_l2">40.</td>
+	<td id="d2_c6_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c6_l2">34.</td>
+	<td id="d2_c7_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c7_l2">25.</td>
+	<td id="d2_c8_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c8_l2">19.</td>
+	<td id="d2_c9_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c9_l2">45.</td>
+	<td id="d2_c10_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c10_l2">35.</td>
+	<td id="d2_c11_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c11_l2">27.</td>
+	<td id="d2_c12_l2">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c12_l2">42.</td>
+	</tr>
+	<tr id="d-2_s-3">
+	<td id="stienis_r">3.</td>
+	<td id="stienis_r">10<sup> 10 </sup>-10<sup> 50 </sup></td>
+	<td id="d2_c1_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c1_l3">24.</td>
+	<td id="d2_c2_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c2_l3">37.</td>
+	<td id="d2_c3_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c3_l3">&nbsp;</td>
+	<td id="d2_c4_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c4_l3">33.</td>
+	<td id="d2_c5_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c5_l3">45.</td>
+	<td id="d2_c6_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c6_l3">27.</td>
+	<td id="d2_c7_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c7_l3">19.</td>
+	<td id="d2_c8_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c8_l3">42.</td>
+	<td id="d2_c9_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c9_l3">38.</td>
+	<td id="d2_c10_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c10_l3">25.</td>
+	<td id="d2_c11_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c11_l3">34.</td>
+	<td id="d2_c12_l3">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c12_l3">34.</td>
+	</tr>
+	<tr id="d-2_s-4">
+	<td id="stienis_r">4.</td>
+	<td id="stienis_r">11<sup> 00 </sup>-11<sup> 40 </sup></td>
+	<td id="d2_c1_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c1_l4">&nbsp;</td>
+	<td id="d2_c2_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c2_l4">24.</td>
+	<td id="d2_c3_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c3_l4">32.</td>
+	<td id="d2_c4_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c4_l4">33.</td>
+	<td id="d2_c5_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c5_l4">35.</td>
+	<td id="d2_c6_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c6_l4">45.</td>
+	<td id="d2_c7_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c7_l4">19.</td>
+	<td id="d2_c8_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c8_l4">42.</td>
+	<td id="d2_c9_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c9_l4">44.</td>
+	<td id="d2_c10_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c10_l4">38.</td>
+	<td id="d2_c11_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c11_l4">34.</td>
+	<td id="d2_c12_l4">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c12_l4">34.</td>
+	</tr>
+	<tr id="d-2_s-5">
+	<td id="stienis_r">5.</td>
+	<td id="stienis_r">12<sup> 10 </sup>-12<sup> 50 </sup></td>
+	<td id="d2_c1_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c1_l5">36.</td>
+	<td id="d2_c2_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c2_l5">37.</td>
+	<td id="d2_c3_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c3_l5">32.</td>
+	<td id="d2_c4_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c4_l5">&nbsp;</td>
+	<td id="d2_c5_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c5_l5">25.</td>
+	<td id="d2_c6_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c6_l5">24.</td>
+	<td id="d2_c7_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c7_l5">35.</td>
+	<td id="d2_c8_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c8_l5">42.</td>
+	<td id="d2_c9_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c9_l5">44.</td>
+	<td id="d2_c10_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c10_l5">27.</td>
+	<td id="d2_c11_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c11_l5">46.</td>
+	<td id="d2_c12_l5">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c12_l5">25.</td>
+	</tr>
+	<tr id="d-2_s-6">
+	<td id="stienis_r">6.</td>
+	<td id="stienis_r">13<sup> 20 </sup>-14<sup> 00 </sup></td>
+	<td id="d2_c1_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c1_l6">&nbsp;</td>
+	<td id="d2_c2_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c2_l6">&nbsp;</td>
+	<td id="d2_c3_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c3_l6">32.</td>
+	<td id="d2_c4_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c4_l6">&nbsp;</td>
+	<td id="d2_c5_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c5_l6">40.</td>
+	<td id="d2_c6_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c6_l6">45.</td>
+	<td id="d2_c7_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c7_l6">27.</td>
+	<td id="d2_c8_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c8_l6">19.</td>
+	<td id="d2_c9_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c9_l6">25.</td>
+	<td id="d2_c10_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c10_l6">44.</td>
+	<td id="d2_c11_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c11_l6">42.</td>
+	<td id="d2_c12_l6">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c12_l6">25.</td>
+	</tr>
+	<tr id="d-2_s-7" >
+	<td id="stienis_r" >7.</td>
+	<td id="stienis_r" >14<sup> 10 </sup>-14<sup> 50 </sup></td>
+	<td  id="d2_c1_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c1_l7">&nbsp;</td>
+	<td  id="d2_c2_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c2_l7">&nbsp;</td>
+	<td  id="d2_c3_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c3_l7">35.</td>
+	<td  id="d2_c4_l7">&nbsp;;</td>
+	<td id="stienis_r" class="cab_d2_c4_l7">&nbsp;</td>
+	<td  id="d2_c5_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c5_l7">&nbsp;</td>
+	<td  id="d2_c6_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c6_l7">&nbsp;</td>
+	<td  id="d2_c7_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c7_l7">19.</td>
+	<td  id="d2_c8_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c8_l7">25.</td>
+	<td  id="d2_c9_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c9_l7">40.</td>
+	<td  id="d2_c10_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c10_l7">44.</td>
+	<td  id="d2_c11_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c11_l7">43.</td>
+	<td  id="d2_c12_l7">&nbsp;</td>
+	<td id="stienis_r" class="cab_d2_c12_l7">&nbsp;</td>
+	</tr>
+	<tr id="d-2_s-8">
+	<td id="stienis_r">8.</td>
+	<td id="stienis_r">15<sup> 00 </sup>-15<sup> 40 </sup></td>
+	<td id="d2_c1_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c2_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c3_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c4_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c5_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c6_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c7_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c8_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c9_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c10_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c11_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c12_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-2_s-9" class="rindas_apaksha">
+	<td id="stienis_r">9.</td>
+	<td id="stienis_r">15<sup> 50 </sup>-16<sup> 30 </sup></td>
+	<td id="d2_c1_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c2_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c3_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c4_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c5_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c6_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c7_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c8_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c9_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c10_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c11_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d2_c12_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-3_s-1" >
+	<td id="diena_3"colspan="1" rowspan="9">
+	<div id="dienas_vertikali">Tre&scaron;diena</div>
+	</td>
+	<td id="stienis_r" >1.</td>
+	<td id="stienis_r" >8<sup> 30 </sup>-9<sup> 10 </sup></td>
+	<td  id="d3_c1_l1">&nbsp;</td>
+	<td id="stienis_r" >36.</td>
+	<td  id="d3_c2_l1">&nbsp;</td>
+	<td id="stienis_r" >37.</td>
+	<td  id="d3_c3_l1">&nbsp;</td>
+	<td id="stienis_r" >32.</td>
+	<td  id="d3_c4_l1">&nbsp;</td>
+	<td id="stienis_r" >33.</td>
+	<td  id="d3_c5_l1">&nbsp;</td>
+	<td id="stienis_r" >43.</td>
+	<td  id="d3_c6_l1">&nbsp;</td>
+	<td id="stienis_r" >38.</td>
+	<td  id="d3_c7_l1">&nbsp;</td>
+	<td id="stienis_r" >40.</td>
+	<td  id="d3_c8_l1">&nbsp;</td>
+	<td id="stienis_r" >42.</td>
+	<td  id="d3_c9_l1">&nbsp;</td>
+	<td id="stienis_r" >44.</td>
+	<td  id="d3_c10_l1">&nbsp;</td>
+	<td id="stienis_r" >&nbsp;</td>
+	<td  id="d3_c11_l1">&nbsp;</td>
+	<td id="stienis_r" >34.</td>
+	<td  id="d3_c12_l1">&nbsp;</td>
+	<td id="stienis_r" >40.</td>
+	</tr>
+	<tr id="d-3_s-2">
+	<td id="stienis_r">2.</td>
+	<td id="stienis_r">9<sup> 20 </sup>-10<sup> 00 </sup></td>
+	<td id="d3_c1_l2">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d3_c2_l2">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d3_c3_l2">&nbsp;</td>
+	<td id="stienis_r">32.</td>
+	<td id="d3_c4_l2">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d3_c5_l2">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c6_l2">&nbsp;</td>
+	<td id="stienis_r">38.</td>
+	<td id="d3_c7_l2">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d3_c8_l2">&nbsp;</td>
+	<td id="stienis_r">27.</td>
+	<td id="d3_c9_l2">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d3_c10_l2">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d3_c11_l2">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	<td id="d3_c12_l2">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	</tr>
+	<tr id="d-3_s-3">
+	<td id="stienis_r">3.</td>
+	<td id="stienis_r">10<sup> 10 </sup>-10<sup> 50 </sup></td>
+	<td id="d3_c1_l3">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d3_c2_l3">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d3_c3_l3">&nbsp;</td>
+	<td id="stienis_r">32.</td>
+	<td id="d3_c4_l3">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d3_c5_l3">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	<td id="d3_c6_l3">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d3_c7_l3">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c8_l3">&nbsp;</td>
+	<td id="stienis_r">19.</td>
+	<td id="d3_c9_l3">&nbsp;</td>
+	<td id="stienis_r">24.</td>
+	<td id="d3_c10_l3">&nbsp;</td>
+	<td id="stienis_r">25.</td>
+	<td id="d3_c11_l3">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d3_c12_l3">&nbsp;</td>
+	<td id="stienis_r">22.</td>
+	</tr>
+	<tr id="d-3_s-4">
+	<td id="stienis_r">4.</td>
+	<td id="stienis_r">11<sup> 00 </sup>-11<sup> 40 </sup></td>
+	<td id="d3_c1_l4">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d3_c2_l4">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d3_c3_l4">&nbsp;</td>
+	<td id="stienis_r">32.</td>
+	<td id="d3_c4_l4">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d3_c5_l4">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	<td id="d3_c6_l4">&nbsp;</td>
+	<td id="stienis_r">25</td>
+	<td id="d3_c7_l4">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d3_c8_l4">&nbsp;</td>
+	<td id="stienis_r">19.</td>
+	<td id="d3_c9_l4">&nbsp;</td>
+	<td id="stienis_r">&nbsp;38.</td>
+	<td id="d3_c10_l4">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d3_c11_l4">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d3_c12_l4">&nbsp;</td>
+	<td id="stienis_r">22.</td>
+	</tr>
+	<tr id="d-3_s-5">
+	<td id="stienis_r">5.</td>
+	<td id="stienis_r">12<sup> 10 </sup>-12<sup> 50 </sup></td>
+	<td id="d3_c1_l5">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d3_c2_l5">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d3_c3_l5">&nbsp;</td>
+	<td id="stienis_r">32.</td>
+	<td id="d3_c4_l5">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d3_c5_l5">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d3_c6_l5">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c7_l5">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d3_c8_l5">&nbsp;</td>
+	<td id="stienis_r">19.</td>
+	<td id="d3_c9_l5">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d3_c10_l5">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d3_c11_l5">&nbsp;</td>
+	<td id="stienis_r">22.</td>
+	<td id="d3_c12_l5">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	</tr>
+	<tr id="d-3_s-6">
+	<td id="stienis_r">6.</td>
+	<td id="stienis_r">13<sup> 20 </sup>-14<sup> 00 </sup></td>
+	<td id="d3_c1_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c2_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c3_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c4_l6">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d3_c5_l6">&nbsp;</td>
+	<td id="stienis_r">25.</td>
+	<td id="d3_c6_l6">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d3_c7_l6">&nbsp;</td>
+	<td id="stienis_r">19.</td>
+	<td id="d3_c8_l6">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d3_c9_l6">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d3_c10_l6">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d3_c11_l6">&nbsp;</td>
+	<td id="stienis_r">22.</td>
+	<td id="d3_c12_l6">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	</tr>
+	<tr id="d-3_s-7">
+	<td id="stienis_r">7.</td>
+	<td id="stienis_r">14<sup> 10 </sup>-14<sup> 50 </sup></td>
+	<td id="d3_c1_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c2_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c3_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c4_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c5_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c6_l7">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d3_c7_l7">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d3_c8_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c9_l7">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d3_c10_l7">&nbsp;</td>
+	<td id="stienis_r">38.</td>
+	<td id="d3_c11_l7">&nbsp;</td>
+	<td id="stienis_r">22.</td>
+	<td id="d3_c12_l7">&nbsp;</td>
+	<td id="stienis_r">35.</td>
+	</tr>
+	<tr id="d-3_s-8">
+	<td id="stienis_r">8.</td>
+	<td id="stienis_r">15<sup> 00 </sup>-15<sup> 40 </sup></td>
+	<td id="d3_c1_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c2_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c3_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c4_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c5_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c6_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c7_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c8_l8">&nbsp;</td>
+	<td id="stienis_r">46.</td>
+	<td id="d3_c9_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c10_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c11_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c12_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-3_s-9" class="rindas_apaksha">
+	<td id="stienis_r">9.</td>
+	<td id="stienis_r">15<sup> 50 </sup>-16<sup> 30 </sup></td>
+	<td id="d3_c1_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c2_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c3_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c4_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c5_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c6_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c7_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c8_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c9_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c10_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c11_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d3_c12_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-4_s-1" >
+	<td id="diena_4"  colspan="1" rowspan="9">
+	<div id="dienas_vertikali">Ceturtdiena</div>
+	</td>
+	<td id="stienis_r" >1.</td>
+	<td id="stienis_r" >8<sup> 30 </sup>-9<sup> 10 </sup></td>
+	<td >
+	<p id="d4_c1_l1">&nbsp;</p>
+	</td>
+	<td id="stienis_r" >37.</td>
+	<td  id="d4_c2_l1">&nbsp;</td>
+	<td id="stienis_r" >24.</td>
+	<td  id="d4_c3_l1">&nbsp;</td>
+	<td id="stienis_r" >33.</td>
+	<td  id="d4_c4_l1">&nbsp;</td>
+	<td id="stienis_r" >36</td>
+	<td  id="d4_c5_l1">&nbsp;</td>
+	<td id="stienis_r" >34.</td>
+	<td  id="d4_c6_l1">&nbsp;</td>
+	<td id="stienis_r" >40.</td>
+	<td  id="d4_c7_l1">&nbsp;</td>
+	<td id="stienis_r" >&nbsp;</td>
+	<td  id="d4_c8_l1">&nbsp;</td>
+	<td id="stienis_r" >38.</td>
+	<td  id="d4_c9_l1">&nbsp;</td>
+	<td id="stienis_r" >&nbsp;</td>
+	<td  id="d4_c10_l1">&nbsp;</td>
+	<td id="stienis_r" >45</td>
+	<td  id="d4_c11_l1">&nbsp;</td>
+	<td id="stienis_r" >25.</td>
+	<td  id="d4_c12_l1">&nbsp;</td>
+	<td id="stienis_r" >43.</td>
+	</tr>
+	<tr id="d-4_s-2">
+	<td id="stienis_r">2.</td>
+	<td id="stienis_r">9<sup> 20 </sup>-10<sup> 00 </sup></td>
+	<td id="d4_c1_l2">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d4_c2_l2">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d4_c3_l2">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d4_c4_l2">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d4_c5_l2">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d4_c6_l2">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	<td id="d4_c7_l2">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c8_l2">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d4_c9_l2">&nbsp;</td>
+	<td id="stienis_r">25.</td>
+	<td id="d4_c10_l2">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d4_c11_l2">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c12_l2">&nbsp;</td>
+	<td id="stienis_r">46.</td>
+	</tr>
+	<tr id="d-4_s-3">
+	<td id="stienis_r">3.</td>
+	<td id="stienis_r">10<sup> 10 </sup>-10<sup> 50 </sup></td>
+	<td id="d4_c1_l3">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d4_c2_l3">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d4_c3_l3">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d4_c4_l3">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d4_c5_l3">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d4_c6_l3">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d4_c7_l3">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c8_l3">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d4_c9_l3">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c10_l3">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d4_c11_l3">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d4_c12_l3">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	</tr>
+	<tr id="d-4_s-4">
+	<td id="stienis_r">4.</td>
+	<td id="stienis_r">11<sup> 00 </sup>-11<sup> 40 </sup></td>
+	<td id="d4_c1_l4">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d4_c2_l4">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d4_c3_l4">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d4_c4_l4">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d4_c5_l4">&nbsp;</td>
+	<td id="stienis_r">24.</td>
+	<td id="d4_c6_l4">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c7_l4">&nbsp;</td>
+	<td id="stienis_r">38.</td>
+	<td id="d4_c8_l4">&nbsp;</td>
+	<td id="stienis_r">25.</td>
+	<td id="d4_c9_l4">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c10_l4">&nbsp;</td>
+	<td id="stienis_r">19.</td>
+	<td id="d4_c11_l4">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d4_c12_l4">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	</tr>
+	<tr id="d-4_s-5">
+	<td id="stienis_r">5.</td>
+	<td id="stienis_r">12<sup> 10 </sup>-12<sup> 50 </sup></td>
+	<td id="d4_c1_l5">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d4_c2_l5">&nbsp;</td>
+	<td id="stienis_r">35.</td>
+	<td id="d4_c3_l5">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c4_l5">&nbsp;</td>
+	<td id="stienis_r">36</td>
+	<td id="d4_c5_l5">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c6_l5">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d4_c7_l5">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d4_c8_l5">&nbsp;</td>
+	<td id="stienis_r">24.</td>
+	<td id="d4_c9_l5">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d4_c10_l5">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	<td id="d4_c11_l5">&nbsp;</td>
+	<td id="stienis_r">38.</td>
+	<td id="d4_c12_l5">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	</tr>
+	<tr id="d-4_s-6">
+	<td id="stienis_r">6.</td>
+	<td id="stienis_r">13<sup> 20 </sup>-14<sup> 00 </sup></td>
+	<td id="d4_c1_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c2_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c3_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c4_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c5_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c6_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c7_l6">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d4_c8_l6">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d4_c9_l6">&nbsp;</td>
+	<td id="stienis_r">46.</td>
+	<td id="d4_c10_l6">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d4_c11_l6">&nbsp;</td>
+	<td id="stienis_r">35.</td>
+	<td id="d4_c12_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-4_s-7">
+	<td id="stienis_r">7.</td>
+	<td id="stienis_r">14<sup> 10 </sup>-14<sup> 50 </sup></td>
+	<td id="d4_c1_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c2_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c3_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c4_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c5_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c6_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c7_l7">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	<td id="d4_c8_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c9_l7">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d4_c10_l7">&nbsp;</td>
+	<td id="stienis_r">35.</td>
+	<td id="d4_c11_l7">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d4_c12_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-4_s-8">
+	<td id="stienis_r">8.</td>
+	<td id="stienis_r">15<sup> 00 </sup>-15<sup> 40 </sup></td>
+	<td id="d4_c1_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c2_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c3_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c4_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c5_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c6_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c7_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c8_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c9_l8">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	<td id="d4_c10_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c11_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c12_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-4_s-9" class="rindas_apaksha">
+	<td id="stienis_r">9.</td>
+	<td id="stienis_r">15<sup> 50 </sup>-16<sup> 30 </sup></td>
+	<td id="d4_c1_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c2_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c3_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c4_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c5_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c6_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c7_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c8_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c9_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c10_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c11_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d4_c12_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-5_s-1" >
+	<td id="diena_5" colspan="1" rowspan="9">
+	<div id="dienas_vertikali">Piektdiena</div>
+	</td>
+	<td id="stienis_r" >1.</td>
+	<td id="stienis_r" >8<sup> 30 </sup>-9<sup> 10 </sup></td>
+	<td  id="d5_c1_l1">&nbsp;</td>
+	<td id="stienis_r" >37.</td>
+	<td  id="d5_c2_l1">&nbsp;.</td>
+	<td id="stienis_r" >37.</td>
+	<td  id="d5_c3_l1">&nbsp;</td>
+	<td id="stienis_r" >33.</td>
+	<td  id="d5_c4_l1">&nbsp;</td>
+	<td id="stienis_r" >36.</td>
+	<td  id="d5_c5_l1">&nbsp;</td>
+	<td id="stienis_r" >25.</td>
+	<td  id="d5_c6_l1">&nbsp;</td>
+	<td id="stienis_r" >34.</td>
+	<td  id="d5_c7_l1">&nbsp;</td>
+	<td id="stienis_r" >43.</td>
+	<td  id="d5_c8_l1">&nbsp;</td>
+	<td id="stienis_r" >38.</td>
+	<td  id="d5_c9_l1">&nbsp;</td>
+	<td id="stienis_r" >45.</td>
+	<td  id="d5_c10_l1">&nbsp;</td>
+	<td id="stienis_r" >44.</td>
+	<td  id="d5_c11_l1">&nbsp;</td>
+	<td id="stienis_r" >42.</td>
+	<td  id="d5_c12_l1">&nbsp;</td>
+	<td id="stienis_r" >&nbsp;</td>
+	</tr>
+	<tr id="d-5_s-2">
+	<td id="stienis_r">2.</td>
+	<td id="stienis_r">9<sup> 20 </sup>-10<sup> 00 </sup></td>
+	<td id="d5_c1_l2">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d5_c2_l2">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d5_c3_l2">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d5_c4_l2">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d5_c5_l2">&nbsp;</td>
+	<td id="stienis_r">35.</td>
+	<td id="d5_c6_l2">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	<td id="d5_c7_l2">&nbsp;</td>
+	<td id="stienis_r">25.</td>
+	<td id="d5_c8_l2">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d5_c9_l2">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c10_l2">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d5_c11_l2">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d5_c12_l2">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	</tr>
+	<tr id="d-5_s-3">
+	<td id="stienis_r">3.</td>
+	<td id="stienis_r">10<sup> 10 </sup>-10<sup> 50 </sup></td>
+	<td id="d5_c1_l3">&nbsp;</td>
+	<td id="stienis_r">24.</td>
+	<td id="d5_c2_l3">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d5_c3_l3">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d5_c4_l3">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d5_c5_l3">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d5_c6_l3">&nbsp;</td>
+	<td id="stienis_r">35.</td>
+	<td id="d5_c7_l3">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d5_c8_l3">&nbsp;</td>
+	<td id="stienis_r">46.</td>
+	<td id="d5_c9_l3">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d5_c10_l3">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c11_l3">&nbsp;</td>
+	<td id="stienis_r">25.</td>
+	<td id="d5_c12_l3">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	</tr>
+	<tr id="d-5_s-4">
+	<td id="stienis_r">4.</td>
+	<td id="stienis_r">11<sup> 00 </sup>-11<sup> 40 </sup></td>
+	<td id="d5_c1_l4">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d5_c2_l4">&nbsp;</td>
+	<td id="stienis_r">37.</td>
+	<td id="d5_c3_l4">&nbsp;</td>
+	<td id="stienis_r">33.</td>
+	<td id="d5_c4_l4">&nbsp;</td>
+	<td id="stienis_r">36.</td>
+	<td id="d5_c5_l4">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c6_l4">&nbsp;</td>
+	<td id="stienis_r">25.</td>
+	<td id="d5_c7_l4">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d5_c8_l4">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d5_c9_l4">&nbsp;</td>
+	<td id="stienis_r">38.</td>
+	<td id="d5_c10_l4">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d5_c11_l4">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d5_c12_l4">&nbsp;</td>
+	<td id="stienis_r">34.</td>
+	</tr>
+	<tr id="d-5_s-5" >
+	<td id="stienis_r" >5.</td>
+	<td id="stienis_r" >12<sup> 10 </sup>-12<sup> 50 </sup></td>
+	<td  id="d5_c1_l5">&nbsp;</td>
+	<td id="stienis_r" >37.</td>
+	<td  id="d5_c2_l5">&nbsp;</td>
+	<td id="stienis_r" >37.</td>
+	<td  id="d5_c3_l5">&nbsp;</td>
+	<td id="stienis_r" >33.</td>
+	<td  id="d5_c4_l5">&nbsp;</td>
+	<td id="stienis_r" >36.</td>
+	<td  id="d5_c5_l5">&nbsp;</td>
+	<td id="stienis_r" >27.</td>
+	<td  id="d5_c6_l5">&nbsp;</td>
+	<td id="stienis_r" >45.</td>
+	<td  id="d5_c7_l5">&nbsp;</td>
+	<td id="stienis_r" >38.</td>
+	<td  id="d5_c8_l5">&nbsp;</td>
+	<td id="stienis_r" >42.</td>
+	<td  id="d5_c9_l5">&nbsp;</td>
+	<td id="stienis_r" >44.</td>
+	<td  id="d5_c10_l5">&nbsp;</td>
+	<td id="stienis_r" >46.</td>
+	<td  id="d5_c11_l5">&nbsp;</td>
+	<td id="stienis_r" >&nbsp;</td>
+	<td  id="d5_c12_l5">&nbsp;</td>
+	<td id="stienis_r" >25.</td>
+	</tr>
+	<tr id="d-5_s-6">
+	<td id="stienis_r">6.</td>
+	<td id="stienis_r">13<sup> 20 </sup>-14<sup> 00 </sup></td>
+	<td id="d5_c1_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c2_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c3_l6">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c4_l6">&nbsp;</td>
+	<td id="stienis_r">35.</td>
+	<td id="d5_c5_l6">&nbsp;</td>
+	<td id="stienis_r">40.</td>
+	<td id="d5_c6_l6">&nbsp;</td>
+	<td id="stienis_r">45.</td>
+	<td id="d5_c7_l6">&nbsp;</td>
+	<td id="stienis_r">38.</td>
+	<td id="d5_c8_l6">&nbsp;</td>
+	<td id="stienis_r">42.</td>
+	<td id="d5_c9_l6">&nbsp;</td>
+	<td id="stienis_r">25.</td>
+	<td id="d5_c10_l6">&nbsp;</td>
+	<td id="stienis_r">44.</td>
+	<td id="d5_c11_l6">&nbsp;</td>
+	<td id="stienis_r">43.</td>
+	<td id="d5_c12_l6">&nbsp;</td>
+	<td id="stienis_r">27.</td>
+	</tr>
+	<tr id="d-5_s-7">
+	<td id="stienis_r">7.</td>
+	<td id="stienis_r">14<sup> 10 </sup>-14<sup> 50 </sup></td>
+	<td id="d5_c1_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c2_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c3_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c4_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c5_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c6_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c7_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c8_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c9_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c10_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c11_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c12_l7">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-5_s-8">
+	<td id="stienis_r">8.</td>
+	<td id="stienis_r">15<sup> 00 </sup>-15<sup> 40 </sup></td>
+	<td id="d5_c1_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c2_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c3_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c4_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c5_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c6_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c7_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c8_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c9_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c10_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c11_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c12_l8">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	<tr id="d-5_s-9" class="rindas_apaksha">
+	<td id="stienis_r">9.</td>
+	<td id="stienis_r">15<sup> 50 </sup>-16<sup> 30 </sup></td>
+	<td id="d5_c1_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c2_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c3_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c4_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c5_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c6_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c7_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c8_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c9_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c10_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c11_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	<td id="d5_c12_l9">&nbsp;</td>
+	<td id="stienis_r">&nbsp;</td>
+	</tr>
+	</tbody>
+    </table>
